@@ -1,9 +1,12 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "homepage": "https://eddskt.github.io/xpweb",
-  "proxy": "https://eddskt.github.io/xpweb",
+  "homepage": ".",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eddskt/xpweb.git"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
