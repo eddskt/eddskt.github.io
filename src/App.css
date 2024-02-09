@@ -1,0 +1,175 @@
+
+html{
+  overflow: hidden;
+}
+
+.fields{
+  border: 1px solid #9f9f9f;
+  border-radius: 0px 6px 6px 6px;
+  position: relative;
+  z-index: 10;
+  margin-top: -1px;
+}
+
+.tabs{
+  position: relative;
+  z-index: 11;
+  margin-bottom: 0px;
+}
+.tabButton{
+  background: #dcdcdc;
+  padding: 0px 6px;
+  border: 1px solid #989898;
+  border-radius: 5px 5px 0px 0px;
+  margin-right: 2px;
+  z-index: 8;
+}
+.tabButton.active {
+  border-top: 4px solid rgba(244, 157, 19, 0.901);
+  background-color: #efefef;
+  border-bottom: none;
+  z-index: 10;
+}
+
+.lineGrid {
+  margin-bottom: 8px;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.desktop-active {
+  border: 2px dotted #c8c8c8;
+}
+
+.application-bottom-bar{
+  background-color: #1387f7;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
+
+  -webkit-box-shadow: inset 1px 1px 4px 1px #679bfd;
+  -moz-box-shadow: inset 1px 1px 4px 1px #679bfd;
+  box-shadow: inset 1px 1px 4px 1px #679bfd;
+}
+.application-bottom-bar.active{
+  background-color: #1951ba;
+  -webkit-box-shadow: inset 1px 1px 4px 1px #002c7e;
+  -moz-box-shadow: inset 1px 1px 4px 1px #002c7e;
+  box-shadow: inset 1px 1px 4px 1px #002c7e;
+}
+
+.appTop{
+  background-color: #022dd2;
+  justify-content: space-between;
+  height: 38px;
+  align-items: center;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  box-shadow: inset 4px 16px 24px -16px #e2e4e8; /* White shadow internal effect, changes to make windows Vista Style*/
+}
+
+.topButton{
+  border: 1px solid white;
+  border-radius: 4px;
+  height: 28px;
+  width: 30px;
+  padding: 1px;
+}
+
+.topButton.close{
+  background-color: #eb2626;
+  box-shadow: inset 2px 3px 4px 1px #f96c6c;
+}
+
+.appOptions > button:disabled{
+  color: #b3b3b3
+}
+
+.basicwindow{
+  left: 100px;
+  top: 100px;
+  width: 50%;
+  height: auto;
+  box-shadow: inset 0px 0px 0px 3px #022dd2;
+  
+}
+
+.buttonPhotoView{
+  width: 30px;
+  height: 30px;
+  border-radius: 9999px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.photoview{
+  background: #eef2fb;
+}
+.notepad{
+  background: #efefe6;
+}
+
+textarea{
+  border: none;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {  }
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {  }
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {  }
+
+/* X-Large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { 
+  .application-bottom-bar{
+    min-width: 160px;
+  }
+ }
+
+/* XX-Large devices (larger desktops, 1400px and up)*/
+@media (min-width: 1400px) {  }
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,21 @@
+.loadingBlocks {
+  animation: loadingbuild 3s ease 0s infinite normal forwards;
+  padding: 0px 0px;
+  margin-left: -60px;
+}
+
+.blockLoad{
+  height: 20px;
+  width: 14px;
+  margin: 2px 1px;
+}
+
+@keyframes loadingbuild {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(300px);
+	}
+}
