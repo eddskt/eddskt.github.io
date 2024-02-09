@@ -1,7 +1,8 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "homepage": "https://eddskt.github.io/curriculumxp",
+  "homepage": "https://eddskt.github.io/xpweb",
+  "proxy": "https://eddskt.github.io/xpweb",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
