@@ -3,6 +3,34 @@ html{
   overflow: hidden;
 }
 
+.topExpBtn{
+  text-align: center;
+}
+
+.topExpBtn:nth-child(-n+3){
+  border-right: 1px solid #a8a8a8;
+}
+
+.tabJobButton.active{
+  /*background-color: #eaeaea;*/
+  color: white;
+  background-color: #0a246a;
+  border-top: 1px dotted #cecece;
+  border-bottom: 1px dotted #cecece;
+}
+
+.companyInfo{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0px 8px;
+  margin: 4px 0px;
+}
+
+.companyInfo:nth-child(-n+3){
+  /*border-right: 1px solid #cecece;*/
+}
+
 .fields{
   border: 1px solid #9f9f9f;
   border-radius: 0px 6px 6px 6px;
@@ -95,6 +123,7 @@ html{
   left: 100px;
   top: 100px;
   width: 50%;
+  min-height: 500px;
   height: auto;
   box-shadow: inset 0px 0px 0px 3px #022dd2;
   

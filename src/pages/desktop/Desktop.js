@@ -10,11 +10,15 @@ import { faWindowMaximize, faForwardStep} from '@fortawesome/free-regular-svg-ic
 import Draggable, {DraggableCore} from 'react-draggable';
 import { Uptoolbar } from '../components/general';
 import { Link } from 'react-router-dom';
+import DeathScreenWithReturn from '../components/deathScreen/deathScreenWithReturn';
+import moment from 'moment';
 
 const Desktop = () => {
   const [authed, dispatch] = AuthConsumer();
   const [activeDesktopButton, setActiveDesktopButton] = useState(0);
   const [oppenedOrder, setOppenedOrder] = useState([]);
+  const [errorStart, setErrorStart] = useState(false);
+  const [tabJob, setTabJob] = useState(0);
   const [applications, setApplications] = useState([{
     id: 1,
     name: "Profile Picture",
@@ -87,10 +91,8 @@ const Desktop = () => {
 
     if (event.detail === 2) {
       const help = applications;
-      console.log(oppenedOrder);
       if(!oppenedOrder.includes(clicado)){
         setOppenedOrder(prevOppenedOrder => ([...prevOppenedOrder, clicado]));
-        console.log(oppenedOrder)
       }
 
       const helposo = help.map((app, index) => {
@@ -143,11 +145,16 @@ const Desktop = () => {
       return app;
     });
     setApplications(prevApplications => ([...help]));
-    console.log(applications, oppenedOrder);
   }
+
+  const clicked = (data) => {
+    setErrorStart(!data);
+  }
+
 
   return (
     <div className='flex w-full h-full'>
+      {errorStart ? <DeathScreenWithReturn className={``} clicked={clicked}/> : ``}
       <div style={{backgroundImage: `url(${backgroundDefault})`}}
         className='w-full min-h-screen bg-cover bg-no-repeat bg-center z-10'>
       </div>
@@ -170,12 +177,12 @@ const Desktop = () => {
         Loggout
       </button> */}
       <div className='flex flex-row min-w-full bg-bluePrimary h-12 bottom-0 z-20 absolute overflow-hidden shadow-[inset_2px_4px_4px_0_rgba(255,255,255,0.3)]'>
-        <div className='-mt-2 flex mr-1 w-[140px] overflow-hidden
+        <button onClick={() => setErrorStart(true)} className='-mt-2 flex mr-1 w-[140px] overflow-hidden 
         xs:w-[80px] sm:w-[80px] md:w-[75px] lg:w-[148px] xl:w-[154px] 2xl:w-[170px]
         h-16 bg-greenStart items-center pl-1.5 rounded-tr-3xl rounded-br-3xl shadow-[inset_2px_12px_6px_0_rgba(255,255,255,0.3)]'>
           <img src={window} className='w-8 h-8 mx-2'/>
           <p className='text-white font-medium text-2xl pb-1 md:hidden'>start</p>
-        </div>
+        </button>
         
         <div className='w-full mr-1 flex flex-row gap-1'>
           {
@@ -204,10 +211,10 @@ const Desktop = () => {
           )}
         </div>
         
-        <div className='flex flex-row items-center w-32 xs:w-16 sm:w-16 md:w-16 lg:w-14 xl:w-36 2xl:w-40 
+        <div className='flex flex-row items-center justify-center w-32 xs:w-16 sm:w-16 md:w-16 lg:w-14 xl:w-36 2xl:w-40 
         bg-blueLight shadow-[inset_2px_4px_4px_0_rgba(255,255,255,0.3)]
         '>
-          <p className='text-white'> 5:20</p> 
+          <p className='text-white'>{moment().format('h:mm A')}</p> 
         </div>
       </div>
 
@@ -247,11 +254,19 @@ const Desktop = () => {
               <button disabled>Help</button>
             </div>
             <div className="text-areaNotepadDiv w-full my-1 px-1">
-              <textarea rows="14" spellcheck="false" className='areaNotepad w-full px-2'>{
+              <textarea rows="18" spellcheck="false" className='areaNotepad w-full px-2'>{
                 ` I am a software developer passionate about HTML, CSS, styling and everything that involves the interface between the computer and the user, better known as Frontend.
-  Graduated in systems analysis and development, my best quality is finding, working around or solving problems (problem-driven, solution-driven).
-  I really like places that are open to suggestions, I believe that we professionals study and live within the area, looking for better solutions to real problems, to improve processes and solutions.`
+Graduated in systems analysis and development.
+                
+In my 9 years of experience, I've worked on incredible projects and amazing companies. A significant portion of my work involved automation projects, where I honed my frontend skills, programming languages, project management and autonomy.
+                
+I Worked for 2 years as a trainee in public service with in the administrative assistant position in the bidding department of my city's hall, which contributed to soft skills such as resilience, communication and empathy.
+                
+I specialized in building software, mobile applications, dashboards, and internal tools.
+Throughout these projects, I consistently held the responsibility of being the initial point of contact with users, enhancing my understanding of end clients and refining my UI/UX knowledge.
+My experience is largely rooted in Startups, which provided valuable lessons on MVP and sharpened my problem-solving techniques—both problem-driven and solution-driven—making i really like to identify origins and devise effective solutions.`
               }</textarea>
+
             </div>
           </div> 
         </Draggable> : 
@@ -356,11 +371,56 @@ const Desktop = () => {
               <button disabled>Tools</button>
               <button disabled>Help</button>
             </div>
+            <div className='topDataHeader justify-around grid grid-cols-12 mb-3'>
+              <button className='container col-span-3 topExpBtn'>Company</button>
+              <button className='container col-span-3 topExpBtn'>Function</button>
+              <button className='container col-span-3 topExpBtn'>In</button>
+              <button className='container col-span-3 topExpBtn'>Out</button>
+            </div>
+            <div className='dataCompanyInfo flex flex-col bg-white mx-1 py-2'>
+              <button className={`grid grid-cols-12 tabJobButton ${tabJob === 0 ? 'active' : ''} ` } onClick={() => setTabJob(0)}>
+                <div className='container col-span-3 companyInfo text-left'> Kokar Automação Residencial</div>
+                <div className='container col-span-3 companyInfo text-left'> Developer</div>
+                <div className='container col-span-3 companyInfo text-center'> 06/2018</div>
+                <div className='container col-span-3 companyInfo text-center'> 07/2023</div> 
+              </button>
+
+              <button className={`grid grid-cols-12 tabJobButton ${tabJob === 1 ? 'active' : ''} ` } onClick={() => setTabJob(1)}>
+                <div className='container col-span-3 companyInfo text-left'> LBN Automação</div>
+                <div className='container col-span-3 companyInfo text-left'> Developer</div>
+                <div className='container col-span-3 companyInfo text-center'> 08/2016</div>
+                <div className='container col-span-3 companyInfo text-center'> 03/2018</div> 
+              </button>
+
+              <button className={`grid grid-cols-12 tabJobButton ${tabJob === 2 ? 'active' : ''} ` } onClick={() => setTabJob(2)}>
+                <div className='container col-span-3 companyInfo text-left'> SEDU</div>
+                <div className='container col-span-3 companyInfo text-left'> Trainee Developer</div>
+                <div className='container col-span-3 companyInfo text-center'> 02/2014</div>
+                <div className='container col-span-3 companyInfo text-center'> 02/2016</div> 
+              </button>
+            </div>
             <div className="text-areaNotepadDiv w-full my-1 px-1">
-              <textarea rows="14" spellcheck="false" className='areaNotepad w-full px-2'>{
-                ` I am a software developer passionate about HTML, CSS, styling and everything that involves the interface between the computer and the user, better known as Frontend.
-  Graduated in systems analysis and development, my best quality is finding, working around or solving problems (problem-driven, solution-driven).
-  I really like places that are open to suggestions, I believe that we professionals study and live within the area, looking for better solutions to real problems, to improve processes and solutions.`
+              <textarea rows="12" spellcheck="false" className={`areaNotepad w-full p-2 min-h-full ${tabJob === 0 ? ' ' : ' hidden '}`}>{
+                `- Responsible for Frontend development, coordination and decision making.
+- Design, Code, Implementation, Maintenance of Mobile Application and internal tools such as dashboards and interfaces, using responsive development on top of technical UI and UX analyses.
+- Agile project management, using SCRUM and MVP methodologies
+                `
+              }</textarea>
+
+              <textarea rows="12" spellcheck="false" className={`areaNotepad w-full p-2 min-h-full ${tabJob === 1 ? ' ' : ' hidden '}`}>{
+                `- Programmer Frontend/Mobile Developer Automation Software Application.
+- Responsive Design
+- Implementation/maintenance of solutions aimed at the company's mobile application.
+- Update of software and application information in the respective stores (App Store & Play Store)
+                `
+              }</textarea>
+
+              <textarea rows="12" spellcheck="false" className={`areaNotepad w-full p-2 min-h-full ${tabJob === 2 ? ' ' : ' hidden '}`}>{
+                `- Providing technical support on software and hardware, maintenance on computer networks, backup copies, electronic mail configuration, keeping Operating Systems up to date.
+- Assistance in data collection, study of use cases for development of new internal and external solutions.
+- Assistance in the development and maintenance of the government website
+- Implementation/Development of systems
+                `
               }</textarea>
             </div>
           </div> 

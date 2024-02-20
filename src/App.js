@@ -11,6 +11,7 @@ import DeathScreenWithoutReturn from './pages/components/deathScreen/deathScreen
 import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
+  console.log("Are you looking for an error? You will find it, because I'm not perfect... \n \n If you are looking for security flaws, you will find them, as I am not an information security expert. \n \n Now, if you liked the project and are trying to see the code, it is available at https:gitbub.com/eddskt/curriculumXp")
   const helmetContext = {};
   const routes = useRoutes([
     {
