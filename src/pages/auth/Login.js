@@ -1,10 +1,11 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback,useEffect } from 'react';
 import AuthConsumer from '../../auth/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import { Row, Col, Input, Form } from "antd";
 import { duckProfile, whiteLogo } from '../../static';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faQuestion, faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import loginSound from "../../assets/winxp.mp3"
 //import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 const Login = () => {
@@ -24,6 +25,15 @@ const Login = () => {
     window.close()
   }
 
+
+  function goToDesktop(){
+    const audio = new Audio(loginSound);
+    audio.addEventListener('ended', () => {
+      dispatch({type: 'login'});
+      navigate('/', {replace: true})
+    });
+    audio.play();
+  }
   console.log(authed);
 
   return (
@@ -64,10 +74,7 @@ const Login = () => {
                         <Input placeholder="" style={{height: 38, padding: 2}} />
                       </Form.Item>
                     </Form>
-                    <button className='ml-2 shadow-md' onClick={() => {
-                      dispatch({type: 'login'});
-                      navigate('/', {replace: true})
-                    }}>
+                    <button className='ml-2 shadow-md' onClick={() => goToDesktop()}>
                       <div className='flex bg-gradient-to-b from-green-500 to-green-600 h-10 w-10 rounded-6 justify-center items-center p-1 border-1 border-grayPrimary 
                         shadow-[inset_2px_4px_3px_1px_rgba(255,255,255,0.4)]'>
                         
